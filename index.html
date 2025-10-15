@@ -1,0 +1,1853 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lavash Center | Premium Ta'm Markazi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        :root {
+            --primary: #A52A2A; /* Rich Red/Burgundy */
+            --secondary: #FFD700; /* Gold/Saffron accent */
+            --dark: #1A1A1A;
+            --light: #F8F8F8; /* Light background */
+            --bg-dark: #333333;
+            --card-bg: #FFFFFF;
+            --shadow-light: 0 12px 30px rgba(0, 0, 0, 0.08);
+            --shadow-dark: 0 12px 30px rgba(165, 42, 42, 0.2);
+            --radius: 12px;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Poppins', Arial, sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+            min-height: 100vh;
+        }
+        /* Utility */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        section { padding: 80px 0; }
+        /* Header */
+        header {
+            background-color: var(--card-bg);
+            border-bottom: 3px solid var(--secondary);
+            padding: 16px 0;
+            position: sticky; top: 0; z-index: 1000;
+            box-shadow: var(--shadow-light);
+            transition: all 0.3s ease;
+        }
+        .header-content {
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.1rem;
+            color: var(--primary);
+            font-weight: 700;
+            letter-spacing: 1px;
+            display: flex; align-items: center; gap: 10px;
+        }
+        .lavash-emoji {
+            font-size: 2.0rem;
+            color: var(--secondary);
+            filter: drop-shadow(0 0 5px var(--primary));
+        }
+        nav a {
+            color: var(--dark);
+            text-decoration: none;
+            margin-left: 30px;
+            font-weight: 600;
+            font-size: 1rem;
+            padding: 5px 0;
+            position: relative;
+            transition: color 0.3s;
+        }
+        nav a::after {
+            content: ''; display: block; width: 0; height: 3px;
+            background: var(--primary); border-radius: 2px;
+            transition: width 0.3s; margin: 0 auto;
+            position: absolute; bottom: -5px; left: 0; right: 0;
+        }
+        nav a:hover, nav a.active { color: var(--primary); }
+        nav a:hover::after { width: 100%; }
+        /* Hero */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)),
+                url('https://images.unsplash.com/photo-1606755962773-0c66d4ca6c98?auto=format&fit=crop&w=1800&q=80') center center / cover no-repeat fixed;
+            color: #fff;
+            min-height: 85vh;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            text-align: center;
+            box-shadow: inset 0 -10px 20px rgba(0,0,0,0.3);
+            position: relative;
+        }
+        .hero-content {
+            padding: 20px;
+            max-width: 800px;
+            animation: slideInUp 1s ease-out;
+        }
+        @keyframes slideInUp {
+            from { opacity: 0; transform: translateY(50px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+        .hero h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.4);
+            color: var(--secondary);
+        }
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 40px;
+            line-height: 1.6;
+            color: #ccc;
+        }
+        .btn {
+            background-color: var(--primary);
+            color: #fff;
+            padding: 14px 35px;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(165, 42, 42, 0.3);
+            text-decoration: none;
+            display: inline-block;
+        }
+        .btn:hover {
+            background-color: var(--dark);
+            color: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+        /* Section Titles */
+        .section-title {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 60px;
+            font-weight: 700;
+            position: relative;
+        }
+        .section-title::after {
+            content: ''; display: block; margin: 15px auto 0 auto;
+            width: 70px; height: 5px;
+            background: var(--secondary);
+            border-radius: 3px;
+        }
+        /* Promo */
+        .promo-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #FFCC00 100%);
+            color: var(--dark);
+            padding: 30px 0;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .promo-content {
+            display: flex; align-items: center; justify-content: center; gap: 20px;
+            font-size: 1.3rem; font-weight: 600;
+        }
+        .promo-content i { font-size: 2.5rem; color: var(--primary); animation: glow 1.5s infinite alternate; }
+        .promo-text b { font-weight: 800; color: var(--primary); }
+        .promo-text span { color: var(--bg-dark); font-weight: 700; }
+        @keyframes glow {
+            from { text-shadow: 0 0 5px var(--primary);}
+            to { text-shadow: 0 0 10px var(--primary), 0 0 15px var(--secondary);}
+        }
+        /* Menu */
+        .menu-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+        }
+        .card {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-light);
+            padding: 20px;
+            text-align: center;
+            transition: all 0.4s ease;
+            overflow: hidden;
+            border: 3px solid transparent;
+        }
+        .card:hover {
+            border-color: var(--primary);
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: var(--shadow-dark);
+        }
+        .card-image-wrapper {
+            overflow: hidden;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            height: 200px;
+        }
+        .card img {
+            width: 100%; height: 100%; object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+        .card:hover img { transform: scale(1.1); }
+        .card h3 {
+            color: var(--primary);
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            display: flex; align-items: center; justify-content: center; gap: 8px;
+        }
+        .badge-new {
+            background: var(--secondary); color: var(--dark);
+            font-size: 0.8rem; padding: 3px 12px;
+            border-radius: 20px; font-weight: 700;
+        }
+        .card p {
+            color: var(--bg-dark);
+            font-weight: 700;
+            font-size: 1.25rem;
+            margin-top: 5px;
+            color: var(--dark);
+        }
+        /* Order */
+        .order { background-color: var(--bg-dark); color: #fff; }
+        .order .section-title { color: var(--secondary); }
+        .order .section-title::after { background: var(--primary); }
+        .order form {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-dark);
+            max-width: 450px;
+            margin: 0 auto;
+            padding: 35px;
+            display: flex; flex-direction: column; gap: 20px;
+            animation: fadeIn 1.5s ease-out;
+        }
+        .order input, .order select, .order textarea {
+            padding: 15px; border-radius: 8px;
+            border: 2px solid #ddd; font-size: 1rem;
+            outline: none; transition: border-color 0.3s;
+            background: #fafafa;
+            color: var(--dark);
+        }
+        .order input:focus, .order select:focus, .order textarea:focus {
+            border-color: var(--primary);
+        }
+        .order button.btn { width: 100%; margin-top: 10px; }
+        .form-message {
+            text-align: center;
+            color: var(--primary);
+            font-weight: 600;
+            margin-top: 10px;
+        }
+        /* Reviews Carousel */
+        .carousel {
+            max-width: 700px; margin: 0 auto 40px auto;
+            position: relative; overflow: hidden;
+            border-radius: 15px; background: var(--card-bg);
+            box-shadow: var(--shadow-light); padding: 30px 0;
+        }
+        .carousel-inner { display: flex; transition: transform 0.5s ease-in-out; }
+        .carousel-item { min-width: 100%; text-align: center; padding: 0 40px; }
+        .carousel-item p {
+            font-size: 1.15rem; color: #555; margin-bottom: 15px;
+            font-style: italic; border-left: 4px solid var(--secondary);
+            padding-left: 15px; line-height: 1.6;
+        }
+        .carousel-item .author {
+            font-weight: 700; color: var(--primary); font-size: 1.05rem;
+            margin-top: 10px;
+        }
+        .carousel-btn {
+            position: absolute; top: 50%; transform: translateY(-50%);
+            background: var(--primary); border: none; font-size: 1.2rem;
+            color: #fff; cursor: pointer; border-radius: 50%;
+            width: 40px; height: 40px; box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+            transition: background 0.2s; z-index: 2;
+        }
+        .carousel-btn:hover { background: var(--secondary); color: var(--dark); }
+        .carousel-btn.prev { left: 15px;}
+        .carousel-btn.next { right: 15px;}
+        /* Branches */
+        .branches-card {
+            background: var(--card-bg); border-radius: var(--radius);
+            box-shadow: var(--shadow-light); padding: 25px;
+            max-width: 700px; margin: 0 auto 30px auto;
+            display: flex; align-items: center; gap: 20px;
+            font-size: 1.1rem; font-weight: 500;
+            border-left: 5px solid var(--primary);
+        }
+        .branches-card i { font-size: 2.5rem; color: var(--primary); }
+        .branches-card a { color: var(--primary); text-decoration: none; font-weight: 700; }
+        .branches iframe {
+            width: 100%; height: 400px; border: none;
+            border-radius: var(--radius); box-shadow: var(--shadow-light);
+            margin-top: 20px;
+        }
+        /* Gallery */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        .gallery-grid img {
+            width: 100%; height: 250px; object-fit: cover;
+            border-radius: 10px; box-shadow: var(--shadow-light);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            filter: grayscale(0.2);
+        }
+        .gallery-grid img:hover {
+            filter: none;
+            transform: scale(1.03);
+            box-shadow: 0 15px 40px rgba(165, 42, 42, 0.2);
+            z-index: 10;
+        }
+        /* Contact */
+        .contact p { text-align: center; font-size: 1.15rem; margin-top: 15px; }
+        .contact b { color: var(--primary); }
+        .contact a { color: var(--dark); text-decoration: none; font-weight: 600; }
+        .contact .socials {
+            margin-top: 25px; display: flex; justify-content: center; gap: 25px;
+        }
+        .contact .socials a {
+            color: var(--primary); font-size: 2.2rem;
+            transition: color 0.3s, transform 0.3s;
+        }
+        .contact .socials a:hover { color: var(--secondary); transform: scale(1.25);}
+        /* Footer */
+        footer {
+            background-color: var(--bg-dark);
+            color: #eee;
+            text-align: center;
+            padding: 25px 0;
+            margin-top: 50px;
+            font-weight: 400;
+        }
+        /* Floating Button */
+        .float-order-btn {
+            position: fixed; right: 25px; bottom: 25px;
+            background-color: var(--secondary); color: var(--dark);
+            border-radius: 50%; width: 65px; height: 65px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 2.5rem; border: none; cursor: pointer;
+            z-index: 999; transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        .float-order-btn:hover { background-color: var(--primary); color: #fff; transform: scale(1.1); }
+
+        /* Responsive */
+        @media(max-width: 992px) {
+            .header-content { flex-direction: column; }
+            nav { margin-top: 15px; }
+            nav a { margin: 0 10px; }
+            .hero h2 { font-size: 2.5rem; }
+            .hero p { font-size: 1.1rem; }
+            .promo-content { flex-direction: column; gap: 10px; font-size: 1.1rem;}
+            .menu-items, .gallery-grid { grid-template-columns: 1fr 1fr; }
+        }
+        @media(max-width: 600px) {
+            .container { padding: 0 15px; }
+            header h1 { font-size: 1.8rem; }
+            nav { display: none; } /* Hide for simplicity on very small screens, or implement a proper hamburger menu */
+            .hero { min-height: 60vh; }
+            .hero h2 { font-size: 2rem; }
+            .hero p { font-size: 1rem; }
+            section { padding: 50px 0; }
+            .section-title { font-size: 2rem; }
+            .menu-items, .gallery-grid { grid-template-columns: 1fr; }
+            .branches-card { flex-direction: column; text-align: center; }
+            .carousel-item { padding: 0 15px; }
+            .float-order-btn { width: 55px; height: 55px; font-size: 2rem; }
+        }
+        .phone-select:focus + .dropdown-arrow {
+            transform: translateY(-50%) rotate(180deg);
+        }
+
+        /* Custom option styling for modern browsers */
+        .phone-select option {
+            padding: 10px;
+            background: white;
+            color: #2c3e50;
+            font-weight: 500;
+        }
+
+        .phone-select option:hover {
+            background: #f8f9fa;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .phone-select {
+                min-width: 180px;
+                font-size: 13px;
+                padding: 10px 40px 10px 35px;
+            }
+        }
+        .phone-selector {
+            position: relative;
+            display: inline-block;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .phone-select {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background: linear-gradient(135deg, #ffffff, #f8f9fa);
+            border: 2px solid #e9ecef;
+            border-radius: 12px;
+            padding: 12px 45px 12px 40px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #2c3e50;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            outline: none;
+            min-width: 200px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .phone-select:hover {
+            border-color: #FC004A;
+            box-shadow: 0 4px 20px rgba(252, 0, 74, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .phone-select:focus {
+            border-color: #FC004A;
+            box-shadow: 0 0 0 3px rgba(252, 0, 74, 0.1);
+        }
+
+        .phone-icon {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #FC004A;
+            font-size: 16px;
+            pointer-events: none;
+        }
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: yellow;
+                flex-direction: column;
+                box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            }
+            
+            .nav-menu.active {
+                display: flex;
+            }
+            
+            .nav-link {
+                border-right: none;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                padding: 15px 24px;
+                text-align: center;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .social-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .hero {
+                margin-top: 140px;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .video-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+        
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            height: 60px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 0;
+            flex: 1;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            padding: 20px 24px;
+            display: block;
+            font-weight: 500;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+           
+        }
+
+        
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .action-btn {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+        }
+
+        .action-btn:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: scale(1.1);
+        }
+
+        .action-btn svg {
+            width: 20px;
+            height: 20px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2;
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+                background: none;
+                border: none;
+                color: white;
+                font-size: 24px;
+                cursor: pointer;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .mobile-menu-btn {
+                display: none;
+            }
+        }
+
+        /* Hover effects */
+        .nav-item::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            transition: width 0.3s ease;
+        }
+
+        .nav-item:hover::after {
+            width: 100%;
+        }
+        .main-header {
+            background:gray;
+            padding: 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            padding: 10px;
+        }
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #FF6B35;
+    --secondary: #F7931E;
+    --dark: #2C2C2C;
+    --light: #FFF8F0;
+    --white: #FFFFFF;
+    --shadow: rgba(0, 0, 0, 0.1);
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--light);
+    color: var(--dark);
+    overflow-x: hidden;
+}
+
+/* Animated Header */
+.main-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(255, 107, 53, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.main-header.scrolled {
+    background: rgba(255, 107, 53, 1);
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2);
+}
+
+.nav-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 40px;
+}
+
+.logo {
+    height: 70px;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.05) rotate(2deg);
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 5px;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    padding: 12px 24px;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    position: relative;
+    border-radius: 8px;
+}
+
+.nav-link::before {
+    content: '';
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 3px;
+    background: white;
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.nav-link:hover::before {
+    width: 60%;
+}
+
+.phone-selector {
+    position: relative;
+}
+
+.phone-select {
+    appearance: none;
+    background: white;
+    border: 2px solid var(--secondary);
+    border-radius: 25px;
+    padding: 12px 45px 12px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--primary);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    outline: none;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.phone-select:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(255, 107, 53, 0.3);
+}
+
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+/* Hero Section */
+#asosiy {
+    margin-top: 100px;
+    background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%);
+    padding: 120px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+#asosiy::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+    animation: moveBackground 20s linear infinite;
+}
+
+@keyframes moveBackground {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(50px, 50px); }
+}
+
+#asosiy img {
+    max-width: 400px;
+    width: 100%;
+    filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.3));
+    animation: float 3s ease-in-out infinite;
+    position: relative;
+    z-index: 1;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+#asosiy h2 {
+    font-size: 3.5rem;
+    color: white;
+    margin: 30px 0 20px;
+    font-weight: 800;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    position: relative;
+    z-index: 1;
+    animation: slideInDown 0.8s ease;
+}
+
+@keyframes slideInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#asosiy p {
+    font-size: 1.5rem;
+    color: white;
+    margin-bottom: 30px;
+    position: relative;
+    z-index: 1;
+    animation: fadeIn 1s ease 0.3s both;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.btn {
+    display: inline-block;
+    padding: 18px 50px;
+    background: white;
+    color: var(--primary);
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    position: relative;
+    z-index: 1;
+    animation: fadeIn 1s ease 0.6s both;
+}
+
+.btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    background: var(--light);
+}
+
+/* Menu Section */
+section {
+    max-width: 1400px;
+    margin: 60px auto;
+    padding: 60px 40px;
+    background: white;
+    border-radius: 30px;
+    box-shadow: 0 10px 50px var(--shadow);
+}
+
+section h2 {
+    font-size: 3rem;
+    color: var(--primary);
+    text-align: center;
+    margin-bottom: 60px;
+    font-weight: 800;
+    position: relative;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+section h2::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 5px;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    border-radius: 10px;
+}
+
+.menu-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+}
+
+.item {
+    background: linear-gradient(135deg, #FFF8F0 0%, #FFE8D0 100%);
+    border-radius: 25px;
+    padding: 30px;
+    text-align: center;
+    transition: all 0.4s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 0;
+}
+
+.item:hover::before {
+    opacity: 0.1;
+}
+
+.item:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 20px 50px rgba(255, 107, 53, 0.3);
+}
+
+.item img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    border: 5px solid var(--primary);
+    transition: all 0.4s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.item:hover img {
+    transform: scale(1.1) rotate(5deg);
+    border-color: var(--secondary);
+}
+
+.item h3 {
+    font-size: 1.5rem;
+    color: var(--dark);
+    margin-bottom: 15px;
+    font-weight: 700;
+    position: relative;
+    z-index: 1;
+}
+
+.item p {
+    color: #666;
+    line-height: 1.6;
+    font-size: 0.95rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* About Section */
+#biz-haqimizda {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    color: white;
+}
+
+#biz-haqimizda h2 {
+    color: white;
+}
+
+#biz-haqimizda h2::after {
+    background: white;
+}
+
+#biz-haqimizda p {
+    font-size: 1.3rem;
+    line-height: 2;
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* Contact Form */
+form {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+input, textarea {
+    padding: 18px 25px;
+    border: 2px solid #E0E0E0;
+    border-radius: 15px;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.3s ease;
+    background: var(--light);
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    background: white;
+    box-shadow: 0 5px 20px rgba(255, 107, 53, 0.2);
+}
+
+textarea {
+    resize: vertical;
+    min-height: 150px;
+}
+
+button[type="submit"] {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white;
+    border: none;
+    padding: 18px;
+    border-radius: 15px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+button[type="submit"]:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(255, 107, 53, 0.4);
+}
+
+#formResult {
+    margin-top: 20px;
+    color: var(--primary);
+    font-weight: 600;
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+/* Footer */
+footer {
+    background: linear-gradient(135deg, var(--dark) 0%, #1a1a1a 100%);
+    color: white;
+    text-align: center;
+    padding: 40px;
+    margin-top: 60px;
+    font-size: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .nav-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: var(--primary);
+        flex-direction: column;
+        padding: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .nav-menu.active {
+        display: flex;
+    }
+
+    .nav-link {
+        padding: 15px;
+        text-align: center;
+    }
+
+    .mobile-menu-btn {
+        display: block;
+    }
+
+    .phone-selector {
+        display: none;
+    }
+
+    #asosiy {
+        padding: 80px 20px;
+    }
+
+    #asosiy h2 {
+        font-size: 2.5rem;
+    }
+
+    #asosiy p {
+        font-size: 1.2rem;
+    }
+
+    section {
+        padding: 40px 20px;
+    }
+
+    section h2 {
+        font-size: 2rem;
+    }
+
+    .menu-items {
+        grid-template-columns: 1fr;
+    }
+}
+.header {
+    text-align: center;
+    color: #5C3317;
+    margin-bottom: 30px;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+}
+
+.header h1 {
+    font-size: 52px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    letter-spacing: 2px;
+}
+
+.contact-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin-top: 15px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 20px;
+    color: #5C3317;
+    font-weight: 500;
+}
+
+.menu-container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.section {
+    background: rgba(255, 255, 255, 0.97);
+    padding: 30px;
+    border-radius: 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.18);
+}
+
+.section-title {
+    color: #5C3317;
+    font-size: 32px;
+    margin-bottom: 25px;
+    text-align: center;
+    font-weight: bold;
+    border-bottom: 4px solid #FFA500;
+    padding-bottom: 12px;
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.menu-item {
+    background: white;
+    border-radius: 15px;
+    padding: 0;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.12);
+    transition: transform 0.3s, box-shadow 0.3s;
+    overflow: hidden;
+    border: 2px solid #f0f0f0;
+}
+
+.menu-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+    border-color: #FFA500;
+}
+
+.item-image {
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(135deg, #fff5e6 0%, #ffe4b3 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 80px;
+    border-bottom: 3px solid #FFA500;
+}
+
+.item-content {
+    padding: 18px;
+}
+
+.item-name {
+    font-size: 20px;
+    font-weight: bold;
+    color: #5C3317;
+    margin-bottom: 10px;
+}
+
+.item-description {
+    font-size: 14px;
+    color: #666;
+    margin: 10px 0;
+    line-height: 1.6;
+    min-height: 40px;
+}
+
+.price-container {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    align-items: center;
+    margin-top: 15px;
+    flex-wrap: wrap;
+}
+
+.price {
+    background: linear-gradient(135deg, #FFA500 0%, #FF8C00 100%);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-weight: bold;
+    font-size: 18px;
+    box-shadow: 0 3px 10px rgba(255, 165, 0, 0.3);
+}
+
+.old-price {
+    color: #999;
+    text-decoration: line-through;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.drinks-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+}
+
+.sauces-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 18px;
+}
+
+.badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #ff4444;
+    color: white;
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    .header h1 {
+        font-size: 40px;
+    }
+    
+    .menu-grid {
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
+
+    .item-image {
+        height: 160px;
+        font-size: 60px;
+    }
+}
+.lang-selector {
+    display: inline-block;
+    position: relative;
+    font-family: Arial, sans-serif;
+}
+
+.lang-select {
+    padding: 4px 20px 4px 8px;
+    font-size: 12px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    background: white url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e") no-repeat right 4px center;
+    background-size: 12px;
+    cursor: pointer;
+    min-width: 45px;
+    appearance: none;
+    color: #555;
+}
+
+.lang-select:hover {
+    border-color: #999;
+}
+
+.lang-select:focus {
+    border-color: #007bff;
+}
+    </style>
+</head>
+<body>
+
+<!-- Main Navigation Header -->
+    <header style="margin-bottom: 0 ; background-color: yellow; color: #1A1A1A;" class="main-header">
+        <nav class="nav-container">
+            <button style="color: #1A1A1A;" class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+            
+            <div class="main-logo">
+                <img style="height: 70px; width: 70px;" src="img/image.png" alt="Logo">
+            </div>
+            
+            <ul style="gap: 10px;" class="nav-menu" id="navMenu">
+                <li  class="nav-item">
+                    <a style="margin-top: 10px; color: #1A1A1A;" href="kirish3.html" class="nav-link">REKLAMA</a>
+                </li>
+                <li class="nav-item">
+                    <a style="margin-top: 10px; color: #1A1A1A;" href="kirish4.html" class="nav-link">MA'LUMOT</a>
+                </li>
+                <li class="nav-item">
+                    <a style="margin-top: 10px; color: #1A1A1A;" href="kirish5.html" class="nav-link">BOG'LANISH</a>
+                </li>
+                <li class="nav-item">
+                    <a style="margin-top: 10px; color: #1A1A1A;" href="kirish6.html" class="nav-link">JOYLASHUVIMIZ</a>
+                </li>
+            </ul>
+        </nav>  
+    </header>
+
+<section style="margin-top: 80px; border-radius: 0%;" id="home" class="hero">
+    <div class="hero-content">
+        <h2>Eng Mazali Lavashlar va Fast Food — Premium Sifat!</h2>
+        <p>Lavash Center — zamonaviy fast food, yuqori sifat va ajoyib ta’m uyg‘unligi. Har doim issiq, yangi va mazali taomlar, tez yetkazib berish va do‘stona xizmat!</p>
+        <a href="#menu" class="btn">Menyuni ko‘rish</a>
+    </div>
+</section>
+
+
+<div id="menu" class="menu-container">
+
+    <div class="section">
+        <h2 class="section-title">🍕 Pitsalar</h2>
+        <div class="menu-grid">
+            <div class="menu-item">
+                <div class="item-image" style="font-size: 70px;"><img src="img/image copy 7.png" alt=""></div>
+                <div class="item-content">
+                    <div class="item-name">Pitssa Pepperoni</div>
+                    <div class="item-description">30 sm / 40 sm</div>
+                    <div class="price-container">
+                        <span class="price">55.000 so'm</span>
+                        <span class="price">85.000 so'm</span>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-item">
+                <div class="item-image" style="font-size: 70px;"><img style="width: 300px;" src="img/image copy 2.png" alt=""></div>
+                <div class="item-content">
+                    <div class="item-name">Pitssa Kolbasali</div>
+                    <div class="item-description">30 sm / 40 sm</div>
+                    <div class="price-container">
+                        <span class="price">55.000 so'm</span>
+                        <span class="price">85.000 so'm</span>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-item">
+                <div class="item-image" style="font-size: 70px;"><img src="img/image copy 3.png" alt=""></div>
+                <div class="item-content">
+                    <div class="item-name">Pitssa Qazili</div>
+                    <div class="item-description">30 sm / 40 sm</div>
+                    <div class="price-container">
+                        <span class="price">65.000 so'm</span>
+                        <span class="price">95.000 so'm</span>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-item">
+                <div class="item-image" style="font-size: 70px;"><img src="img/image copy 4.png" alt=""></div>
+                <div class="item-content">
+                    <div class="item-name">Pitssa Margarita</div>
+                    <div class="item-description">30 sm / 40 sm</div>
+                    <div class="price-container">
+                        <span class="price">55.000 so'm</span>
+                        <span class="price">85.000 so'm</span>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-item">
+                <div class="item-image" style="font-size: 70px;"><img src="img/image copy 5.png" alt=""></div>
+                <div class="item-content">
+                    <div class="item-name">Pitssa Assorti</div>
+                    <div class="item-description">30 sm / 40 sm</div>
+                    <div class="price-container">
+                        <span class="price">60.000 so'm</span>
+                        <span class="price">90.000 so'm</span>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-item">
+                <div class="item-image" style="font-size: 70px;"><img src="img/image copy 6.png" alt=""></div>
+                <div class="item-content">
+                    <div class="item-name">Pitssa Go'shtli</div>
+                    <div class="item-description">30 sm / 40 sm</div>
+                    <div class="price-container">
+                        <span class="price">60.000 so'm</span>
+                        <span class="price">90.000 so'm</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">🌯 Lavashlar</h2>
+        <div class="menu-grid">
+            <div class="menu-item">
+                <div class="item-image" style="font-size: 70px;"><img src="img/image copy 8.png" alt=""></div>
+                <div class="item-content">
+                    <div class="item-name">Lavash (Katta)</div>
+                    <div class="item-description">O'rtacha achchiq</div>
+                    <div class="price">33.000 so'm</div>
+                </div>
+            </div>
+            <div class="menu-item">
+                <div class="item-image" style="font-size: 70px;"><img src="img/image copy 9.png" alt=""></div>
+                <div class="item-content">
+                    <div class="item-name">Lavash Pishloqli (Katta)</div>
+                     <div class="item-description">Nordon shirin</div>
+                    <div class="price">36.000 so'm</div>
+                </div>
+            </div>
+            <div class="menu-item">
+                <div class="item-image" style="font-size: 70px;"><img src="img/image copy 10.png" alt=""></div>
+                <div class="item-content">
+                    <div class="item-name">Lavash Mini</div>
+                     <div class="item-description">Sevimli tanovul</div>
+                    <div class="price">27.000 so'm</div>
+                </div>
+            </div>
+            <div class="menu-item">
+                <div class="item-image" style="font-size: 70px;"><img src="img/image copy 9.png" alt=""></div>
+                <div class="item-content">
+                    <div class="item-name">Lavash Mini Pishloqli</div>
+                     <div class="item-description">Keng tanlov</div>
+                    <div class="price">30.000 so'm</div>
+                </div>
+            </div>
+             <div class="menu-item">
+                <div class="item-image" style="font-size: 70px;"><img src="img/image copy 8.png" alt=""></div>
+                <div class="item-content">
+                    <div class="item-name">Lavash Achchiq</div>
+                     <div class="item-description">Keng tanlov</div>
+                    <div class="price">34.000 so'm</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">🌮 Shaurmalar</h2>
+        <div class="menu-grid">
+            <div class="menu-item">
+                <div class="item-image" style="font-size: 70px;"><img src="img/image copy 15.png" alt=""></div>
+                <div class="item-content">
+                    <div class="item-name">Shaurma Katta</div>
+                    <div class="item-description">O'rtacha achchiq</div>
+                    <div class="price">38.000 so'm</div>
+                </div>
+            </div>
+             <div class="menu-item">
+                <div class="item-image" style="font-size: 70px;"><img src="img/image copy 16.png" alt=""></div>
+                <div class="item-content">
+                    <div class="item-name">Shaurma (Katta)</div>
+                    <div class="item-description">Sevimli tanovul</div>
+                    <div class="price">31.000 so'm</div>
+                </div>
+            </div>
+             <div class="menu-item">
+                <div class="item-image" style="font-size: 70px;"><img src="img/image copy 15.png" alt=""></div>
+                <div class="item-content">
+                    <div class="item-name">Shaurma Mini</div>
+                    <div class="item-description">Sevimli tanovul</div>
+                    <div class="price">24.000 so'm</div>
+                </div>
+            </div>
+             <div class="menu-item">
+                <div class="item-image" style="font-size: 70px;"><img src="img/image copy 17.png" alt=""></div>
+                <div class="item-content">
+                    <div class="item-name">Xaggi</div>
+                    <div class="item-description">Keng tanlov</div>
+                    <div class="price">34.000 so'm</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">🍔 Burger va Hot-Doglar</h2>
+        <div class="menu-grid">
+            <div class="menu-item">
+                <div class="item-image" style="font-size: 70px;"><img src="img/image copy 11.png" alt=""></div>
+                <div class="item-content">
+                    <div class="item-name">Gamburger</div>
+                    <div class="item-description">O'rtacha achchiq / nordon shirin</div>
+                    <div class="price">17.000 so'm</div>
+                </div>
+            </div>
+            <div class="menu-item">
+                <div class="item-image" style="font-size: 70px;"><img src="img/image copy 12.png" alt=""></div>
+                <div class="item-content">
+                    <div class="item-name">Chizburger</div>
+                    <div class="item-description">O'rtacha achchiq</div>
+                    <div class="price">20.000 so'm</div>
+                </div>
+            </div>
+             <div class="menu-item">
+                <div class="item-image" style="font-size: 70px;"><img src="img/image copy 13.png" alt=""></div>
+                <div class="item-content">
+                    <div class="item-name">Hot-Dog</div>
+                    <div class="item-description">Pishloqli sous</div>
+                    <div class="price">13.000 so'm</div>
+                </div>
+            </div>
+             <div class="menu-item">
+                <div class="item-image" style="font-size: 70px;"><img src="img/image copy 14.png" alt=""></div>
+                <div class="item-content">
+                    <div class="item-name">Klassik Hot-Dog</div>
+                    <div class="item-description">Keng tanlov</div>
+                    <div class="price">25.000 so'm</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <div class="section">
+        <h2 class="section-title">🍗 Asosiy Taomlar va Gazaklar</h2>
+        <div class="menu-grid">
+             <div class="menu-item">
+                <div class="item-image" style="font-size: 70px;"><img src="img/image copy 18.png" alt=""></div>
+                <div class="item-content">
+                    <div class="item-name">Klab Sendvich</div>
+                    <div class="price">35.000 so'm</div>
+                </div>
+            </div>
+             <div class="menu-item">
+                <div class="item-image" style="font-size: 70px;"><img src="img/image copy 19.png" alt=""></div>
+                <div class="item-content">
+                    <div class="item-name">Donar Blyudo</div>
+                    <div class="price">47.000 so'm</div>
+                </div>
+            </div>
+            <div class="menu-item">
+                <div class="item-image" style="font-size: 70px;"><img src="img/image copy 20.png" alt=""></div>
+                <div class="item-content">
+                    <div class="item-name">Tovuq qanotchalari</div>
+                    <div class="price">34.000 so'm</div>
+                </div>
+            </div>
+            <div class="menu-item">
+                <div class="item-image" style="font-size: 70px;"><img src="img/image copy 21.png" alt=""></div>
+                <div class="item-content">
+                    <div class="item-name">Striplar</div>
+                    <div class="price">32.000 so'm</div>
+                </div>
+            </div>
+            <div class="menu-item">
+                <div class="item-image" style="font-size: 70px;"><img src="img/image copy 22.png" alt=""></div>
+                <div class="item-content">
+                    <div class="item-name">Kartofel Fri</div>
+                    <div class="price">17.000 so'm</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">🥤 Ichimliklar</h2>
+        <div class="menu-grid">
+            <div class="menu-item">
+                <div class="item-image" style="font-size: 70px;"><img style="width: 300px;" src="img/image copy 23.png" alt=""></div>
+                <div class="item-content">
+                    <div class="item-name">Pepsi 0.25L</div>
+                    <div class="price">5.000 so'm</div>
+                </div>
+            </div>
+            <div class="menu-item">
+                <div class="item-image" style="font-size: 70px;"><img style="width: 300px;" src="img/image copy 23.png" alt=""></div>
+                <div class="item-content">
+                    <div class="item-name">Pepsi 0.5L</div>
+                    <div class="price">9.000 so'm</div>
+                </div>
+            </div>
+            <div class="menu-item">
+                <div class="item-image" style="font-size: 70px;"><img style="width: 300px;" src="img/image copy 23.png" alt=""></div>
+                <div class="item-content">
+                    <div class="item-name">Pepsi 1.5L</div>
+                    <div class="price">16.000 so'm</div>
+                </div>
+            </div>
+             <div class="menu-item">
+                <div class="item-image" style="font-size: 70px;"><img style="width: 40px;"  src="img/image copy 26.png" alt=""></div>
+                <div class="item-content">
+                    <div class="item-name">Chortoq</div>
+                    <div class="price">12.000 so'm</div>
+                </div>
+            </div>
+            <div class="menu-item">
+                <div class="item-image" style="font-size: 70px;"><img style="width:180px;"  src="img/image copy 27.png" alt=""></div>
+                <div class="item-content">
+                    <div class="item-name">Sok 1L</div>
+                    <div class="price">15.000 so'm</div>
+                </div>
+            </div>
+            <div class="menu-item">
+                <div class="item-image" style="font-size: 70px;"><img style="width: 180px;"  src="img/image copy 28.png" alt=""></div>
+                <div class="item-content">
+                    <div class="item-name">Kompot 0.5L</div>
+                    <div class="price">5.000 so'm</div>
+                </div>
+            </div>
+            <div class="menu-item">
+                <div class="item-image" style="font-size: 70px;"><img style="width: 180px;"  src="img/image copy 29.png" alt=""></div>
+                <div class="item-content">
+                    <div class="item-name">Flash 0.5L</div>
+                    <div class="price">15.000 so'm</div>
+                </div>
+            </div>
+             <div class="menu-item">
+                <div class="item-image" style="font-size: 70px;"><img style="width: 250px;"  src="img/image copy 30.png" alt=""></div>
+                <div class="item-content">
+                    <div class="item-name">Kofe</div>
+                    <div class="price">5.000 so'm</div>
+                </div>
+            </div>
+             <div class="menu-item">
+                <div class="item-image" style="font-size: 70px;"><img style="width: 250px;"  src="img/image copy 31.png" alt=""></div>
+                <div class="item-content">
+                    <div class="item-name">Choy</div>
+                    <div class="price">3.000 so'm</div>
+                </div>
+            </div>
+             <div class="menu-item">
+                <div class="item-image" style="font-size: 70px;"><img style="width: 250px;" src="img/image copy 32.png" alt=""></div>
+                <div class="item-content">
+                    <div class="item-name">Limonli Choy</div>
+                    <div class="price">6.000 so'm</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section id="order" class="order">
+    <div class="container">
+        <h2 class="section-title">🛒 Tezkor Buyurtma</h2>
+        <form onsubmit="event.preventDefault(); document.getElementById('formResult').textContent='✅ Buyurtmangiz qabul qilindi! Tez orada siz bilan bog‘lanamiz.'; this.reset(); setTimeout(() => {document.getElementById('formResult').textContent='';}, 4000);">
+            <input type="text" placeholder="Ismingiz" required>
+            <input type="number" placeholder="Telefon raqamingiz" required>
+            <textarea placeholder="Manzil va qo‘shimcha izoh..." rows="4"></textarea>
+           <a href="https://t.me/lavashcenter_guliston" target="_blank" rel="noopener noreferrer">
+                <button class="btn" type="button">Buyurtma berish</button>
+           </a>
+
+        </form>
+    </div>
+</section>
+
+<section id="reviews">
+    <div class="container">
+        <h2 class="section-title">⭐ Mijozlarimiz Fikri</h2>
+        <div class="carousel" id="carousel">
+            <button class="carousel-btn prev" onclick="moveCarousel(-1)"><i class="fa-solid fa-chevron-left"></i></button>
+            <div class="carousel-inner" id="carousel-inner">
+                <div class="carousel-item">
+                    <p>“Lavash Center’dagi lavashlar juda mazali va issiq! Yetkazib berish ham tez. Tavsiya qilaman!”</p>
+                    <div class="author">— Dilshod, Toshkent</div>
+                </div>
+                <div class="carousel-item">
+                    <p>“Burger va hot-doglar juda sifatli. Xodimlar do‘stona va xizmat zo‘r!”</p>
+                    <div class="author">— Aziza, Chilonzor</div>
+                </div>
+                <div class="carousel-item">
+                    <p>“Ajoyib narx va sifat! Har doim buyurtma qilaman. Aksiya va bonuslar ham yoqadi.”</p>
+                    <div class="author">— Timur, Sergeli</div>
+                </div>
+            </div>
+            <button class="carousel-btn next" onclick="moveCarousel(1)"><i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+    </div>
+</section>
+
+<section id="branches" class="branches">
+    <div class="container">
+        <h2 class="section-title">📍 Bizning Filiallar</h2>
+        <div class="branches-card">
+            <i class="fa-solid fa-location-dot"></i>
+            <div>
+                <b>Toshkent viloyati, Guliston</b><br>
+                Ish vaqti: **10:00 – 23:00**<br>
+                Telefon: <a href="tel:+998902550099">+998 90 255 00 99</a>
+            </div>
+        </div>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3034.264876576292!2d68.77849627583122!3d40.491525471427735!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38b207013cabcce1%3A0x2b710779a3605835!2z0JvQsNCy0LDRiCDRhtC10L3RgtGAINCz0YPQu9C40YHRgtCw0L0!5e0!3m2!1sru!2s!4v1760459198626!5m2!1sru!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+</section>
+
+<section id="gallery" class="gallery">
+    <div class="container">
+        <h2 class="section-title">🖼️ Galereya</h2>
+        <div class="gallery-grid">
+            <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=800&q=80" alt="Lavash Galereya 1" tabindex="0">
+            <img src="https://images.unsplash.com/photo-1565958011705-44e211b4005b?auto=format&fit=crop&w=800&q=80" alt="Fast Food Galereya 2" tabindex="0">
+            <img src="https://images.unsplash.com/photo-1590080875831-a0a6b1efed05?auto=format&fit=crop&w=800&q=80" alt="Taomlar Galereya 3" tabindex="0">
+            <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=800&q=80" alt="Premium Taomlar Galereya 4" tabindex="0">
+        </div>
+    </div>
+</section>
+
+<section id="contact" class="contact">
+    <div class="container">
+        <h2 class="section-title">📞 Aloqa</h2>
+        <p>
+            <b>Telefon:</b> <a href="tel:+998902550099">+998 90 255 00 99</a><br>
+            <b>Manzil:</b> Toshkent viloyati, Guliston
+        </p>
+        <div class="socials">
+            <a href="https://www.instagram.com/lavashcenter_guliston?utm_source=ig_web_button_share_sheet&igsh=MWxpdDEzZW0zbXI4cw==" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://t.me/lavashcenter_guliston" target="_blank" title="Telegram"><i class="fab fa-telegram"></i></a>
+            <a href="tel:+998902550099" title="Telefon"><i class="fa-solid fa-phone"></i></a>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>© 2025 Lavash Center. Barcha huquqlar himoyalangan. Premium Sifat, A'lo Ta'm.</p>
+</footer>
+
+<button class="float-order-btn" onclick="window.location='#order'" title="Tezkor Buyurtma">🛒</button>
+
+<script>
+    // Carousel logic
+    let carouselIndex = 0;
+    const carouselInner = document.getElementById('carousel-inner');
+    const items = carouselInner ? carouselInner.children : [];
+    function moveCarousel(dir) {
+        if (!carouselInner) return;
+        carouselIndex += dir;
+        if (carouselIndex < 0) carouselIndex = items.length - 1;
+        if (carouselIndex >= items.length) carouselIndex = 0;
+        carouselInner.style.transform = `translateX(-${carouselIndex * 100}%)`;
+    }
+    // Auto carousel
+    if (items.length > 1) {
+        setInterval(() => { moveCarousel(1) }, 6000);
+    }
+    
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                targetElement.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    });
+
+    // Gallery lightbox (simple JS implementation)
+    document.querySelectorAll('.gallery-grid img').forEach(img => {
+        img.addEventListener('click', function() {
+            const overlay = document.createElement('div');
+            overlay.style.cssText = `
+                position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+                background: rgba(0,0,0,0.9); display: flex; align-items: center;
+                justify-content: center; z-index: 9999; cursor: pointer;
+                opacity: 0; transition: opacity 0.3s;
+            `;
+            const image = document.createElement('img');
+            image.src = this.src;
+            image.style.cssText = `
+                max-width: 90vw; max-height: 85vh; border-radius: 15px;
+                box-shadow: 0 10px 40px rgba(255, 215, 0, 0.2); transform: scale(0.8);
+                transition: transform 0.3s;
+            `;
+            
+            overlay.appendChild(image);
+            document.body.appendChild(overlay);
+
+            // Animate in
+            setTimeout(() => {
+                overlay.style.opacity = '1';
+                image.style.transform = 'scale(1)';
+            }, 10);
+
+            // Animate out and remove
+            overlay.onclick = () => {
+                overlay.style.opacity = '0';
+                image.style.transform = 'scale(0.8)';
+                setTimeout(() => {
+                    document.body.removeChild(overlay);
+                }, 300);
+            };
+        });
+    });
+       // Mobile menu toggle
+        function toggleMobileMenu() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.toggle('active');
+        }
+         document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('navMenu').classList.remove('active');
+            });
+        });
+        // Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if(target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth' });
+        }
+    });
+});
+
+// Header scroll effect
+window.addEventListener('scroll', () => {
+    const header = document.getElementById('header');
+    if(window.scrollY > 50) {
+        header.classList.add('scrolled');
+    } else {
+        header.classList.remove('scrolled');
+    }
+});
+
+// Form submission
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    document.getElementById('formResult').textContent = "✓ Xabaringiz muvaffaqiyatli yuborildi!";
+    this.reset();
+    setTimeout(() => {
+        document.getElementById('formResult').textContent = "";
+    }, 3000);
+});
+
+// Mobile menu
+function toggleMobileMenu() {
+    document.getElementById('navMenu').classList.toggle('active');
+}
+
+document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+        document.getElementById('navMenu').classList.remove('active');
+    });
+});
+function goToSite(url) {
+    if (url) {
+        window.location.href = url;
+    }
+}
+</script>
+</body>
+</html>

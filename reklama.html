@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frenzy Fast Food - Reklama</title>
+    <link rel="icon" href="image.png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #FF6B35;
+            --secondary: #F7931E;
+            --dark: #2C2C2C;
+            --light: #FFF8F0;
+            --white: #FFFFFF;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #FFF8F0 0%, #FFE8D0 50%, #FFF8F0 100%);
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        .main-header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.98), rgba(247, 147, 30, 0.98));
+            backdrop-filter: blur(15px);
+            z-index: 1000;
+            box-shadow: 0 8px 40px rgba(255, 107, 53, 0.4);
+            border-bottom: 3px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 40px;
+        }
+
+        .logo-text {
+            font-size: 2rem;
+            font-weight: 900;
+            color: white;
+            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            letter-spacing: 2px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 10px;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            padding: 12px 28px;
+            font-weight: 700;
+            font-size: 15px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+        }
+
+        .nav-link:hover::before {
+            left: 0;
+        }
+
+        .nav-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: white;
+            border: none;
+            color: var(--primary);
+            font-size: 28px;
+            cursor: pointer;
+            padding: 10px 15px;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 100px;
+            background: linear-gradient(135deg, #FF6B35 0%, #F7931E 50%, #FF6B35 100%);
+            padding: 120px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '🍔🍕🌮🍟🥤';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 15rem;
+            opacity: 0.1;
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            color: white;
+            margin-bottom: 25px;
+            font-weight: 900;
+            text-shadow: 0 6px 30px rgba(0, 0, 0, 0.4);
+            position: relative;
+            z-index: 1;
+            animation: bounceIn 1s ease;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        @keyframes bounceIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.3);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .hero p {
+            font-size: 1.6rem;
+            color: white;
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            font-weight: 600;
+            text-shadow: 0 3px 15px rgba(0, 0, 0, 0.3);
+            animation: fadeInUp 1s ease 0.3s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .emoji-line {
+            font-size: 3rem;
+            margin-top: 20px;
+            animation: wave 2s ease-in-out infinite;
+        }
+
+        @keyframes wave {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Video Section */
+        .video-section {
+            max-width: 1600px;
+            margin: 80px auto;
+            padding: 80px 40px;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-align: center;
+            margin-bottom: 70px;
+            font-weight: 900;
+            position: relative;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 6px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--primary));
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.5);
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 50px;
+            margin-bottom: 80px;
+        }
+
+        .video-card {
+            background: white;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 15px 60px rgba(255, 107, 53, 0.2);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+        }
+
+        .video-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary), var(--primary));
+            border-radius: 30px;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .video-card:hover {
+            transform: translateY(-20px) scale(1.02);
+            box-shadow: 0 30px 80px rgba(255, 107, 53, 0.4);
+        }
+
+        .video-card:hover::before {
+            opacity: 1;
+        }
+
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            /* Instagram Reel uchun 16:9 yoki 4:5 emas, taxminan vertikal format (masalan, 3:4) uchun 133.33% */
+            padding-bottom: 133.33%; 
+            background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 4rem;
+            color: white;
+            font-weight: 900;
+        }
+        
+        /* O'zgartirilgan: endi iframe o'rniga faqat to'g'ridan-to'g'ri havolali tugma bo'ladi */
+        .video-wrapper a {
+            position: absolute;
+            z-index: 10;
+            display: block;
+            padding: 15px 30px;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            transition: background-color 0.3s ease;
+        }
+
+        .video-wrapper a:hover {
+            background: var(--secondary);
+        }
+
+        .video-info {
+            padding: 35px;
+            background: linear-gradient(135deg, #FFF8F0 0%, #FFE8D0 100%);
+            position: relative;
+        }
+
+        .video-info::before {
+            content: '▶';
+            position: absolute;
+            top: 15px;
+            right: 30px;
+            font-size: 2rem;
+            color: var(--primary);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.1); }
+        }
+
+        .video-info h3 {
+            font-size: 1.8rem;
+            color: var(--dark);
+            margin-bottom: 15px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .video-info p {
+            color: #555;
+            line-height: 1.8;
+            font-size: 1.05rem;
+            font-weight: 500;
+        }
+
+        /* Featured Video */
+        .featured-video {
+            max-width: 1400px;
+            margin: 100px auto 80px;
+            padding: 0 40px;
+        }
+
+        .featured-card {
+            background: white;
+            border-radius: 40px;
+            overflow: hidden;
+            box-shadow: 0 25px 100px rgba(255, 107, 53, 0.3);
+            border: 4px solid transparent;
+            background-clip: padding-box;
+            position: relative;
+        }
+
+        .featured-card::before {
+            content: '';
+            position: absolute;
+            top: -4px;
+            left: -4px;
+            right: -4px;
+            bottom: -4px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary), var(--primary));
+            border-radius: 40px;
+            z-index: -1;
+            animation: borderGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes borderGlow {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        /* O'zgartirilgan: Asosiy video qismiga qo'shimcha uslub (rasmning joylashuvi uchun) */
+        .featured-video img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 40px 40px 0 0; 
+        }
+
+        .featured-info {
+            padding: 60px;
+            background: linear-gradient(135deg, #FFF8F0 0%, #FFE8D0 100%);
+            text-align: center;
+        }
+
+        .featured-info h2 {
+            font-size: 2.8rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 25px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .featured-info p {
+            font-size: 1.3rem;
+            color: #555;
+            line-height: 2;
+            font-weight: 500;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            max-width: 1200px;
+            margin: 100px auto;
+            padding: 80px 40px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 40px;
+            text-align: center;
+            box-shadow: 0 25px 80px rgba(255, 107, 53, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '🎬';
+            position: absolute;
+            font-size: 20rem;
+            opacity: 0.1;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: rotate 15s linear infinite;
+        }
+
+        .cta-section h2 {
+            font-size: 3rem;
+            color: white;
+            margin-bottom: 30px;
+            font-weight: 900;
+            position: relative;
+            z-index: 1;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .cta-section p {
+            font-size: 1.4rem;
+            color: white;
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 1;
+            font-weight: 600;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 20px 60px;
+            background: white;
+            color: var(--primary);
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 900;
+            font-size: 1.3rem;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 1;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border: 3px solid white;
+        }
+
+        .btn:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+        }
+        
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: white;
+            text-align: center;
+            padding: 60px 40px;
+            margin-top: 100px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        footer p {
+            margin-bottom: 20px;
+        }
+
+        .footer-emoji {
+            font-size: 2rem;
+            margin-top: 10px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: linear-gradient(135deg, var(--primary), var(--secondary));
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .video-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .featured-info {
+                padding: 40px 30px;
+            }
+
+            .featured-info h2 {
+                font-size: 2rem;
+            }
+
+            .cta-section h2 {
+                font-size: 2rem;
+            }
+
+            .cta-section p {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <nav class="nav-container">
+            <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
+            <div class="logo-text"><img style="height: 80px; width: 80px;" src="img/image.png" alt=""></div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="animatsiya1.html" class="nav-link">Asosiy</a></li>
+                <li><a href="#reklama" class="nav-link">Reklama</a></li>
+                <li><a href="animatsiya3.html" class="nav-link">Ma'lumot</a></li>
+                <li><a href="animatsiya4.html" class="nav-link">Bog'lanish</a></li>
+                <li><a href="animatsiya5.html" class="nav-link">Joylashuv</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>🎬 Bizning Reklamalar 🎬</h1>
+        <p>Frenzy Fast Food ning eng zo'r va ajoyib reklama videolarini tomosha qiling!</p>
+        <div class="emoji-line">🍔 🍕 🌮 🍟 🥤</div>
+    </section>
+
+    <section style="max-width: 450px;" class="featured-video">
+        <h2 class="section-title">⭐ Asosiy Reklama Video ⭐</h2>
+        <div class="featured-card">
+             <img src="img/image.png" alt="Featured Video Image">
+            <div class="featured-info">
+                <h2>🔥 Frenzy Fast Food - Ta'mi Ajoyib! 🔥</h2>
+                <p>Bizning eng zo'r reklama videomizda siz eng mazali taomlarimiz va mukammal xizmatimiz bilan tanishasiz. Har bir loqma - bu yangi tajriba va unutilmas ta'm! Tez xizmat, sifatli mahsulot va do'stona atmosfera - hammasi sizning uchun!</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="reklama" class="video-section">
+        <h2 class="section-title">🎥 Barcha Reklama Videolar 🎥</h2>
+        <div class="video-grid">
+            
+            <div class="video-card">
+                <div class="video-wrapper">
+                    <a style="margin-top: 100px;" href="https://www.instagram.com/reel/DOOLqTBiDuP/?igsh=MWF4cm8yYjJpMThmNw==" target="_blank">Reel'ni ko'rish ↗️</a>
+                </div>
+                <div class="video-info">
+                    <h3>🍔 Burger va Fries! (Instagram Reel)</h3>
+                    <p>Bizning eng mashhur va lazzatli burgerlarimiz! Har bir burger - bu noyob ta'm, yumshoq go'sht va yangi ingredientlar!</p>
+                </div>
+            </div>
+
+            <div class="video-card">
+                <div class="video-wrapper">
+                    <a style="margin-top: 100px;" href="https://www.instagram.com/reel/DMnFoA4sqLe/?igsh=dHJ6MjMyNmVtNHhx" target="_blank">Reel'ni ko'rish ↗️</a>
+                </div>
+                <div class="video-info">
+                    <h3>🍕 Maxsus Pizza Retsepti (Instagram Reel)</h3>
+                    <p>Issiq, mazali va sifatli pizzalarimiz! Turli xil to'ldirish, mozzarella pishloq va ajoyib sous bilan!</p>
+                </div>
+            </div>
+
+            <div class="video-card">
+                <div class="video-wrapper">
+                    <a style="margin-top: 100px;" href="https://www.instagram.com/reel/DKzTiYTMAGo/?igsh=aTgwNmphMHVlejB5" target="_blank">Reel'ni ko'rish ↗️</a>
+                </div>
+                <div class="video-info">
+                    <h3>⚡ Chegirmalar va Aksiyalar (Instagram Reel)</h3>
+                    <p>Chegirmalar, aksiyalar va maxsus takliflar! Frenzy Fast Food dan har kuni yangi imkoniyatlar!</p>
+                </div>
+            </div>
+
+            <div class="video-card">
+                <div class="video-wrapper">
+                    <a style="margin-top: 100px;" href="https://www.instagram.com/reel/DGxoPdTNHEW/?igsh=eTE4b2Eyb3VsaXBr" target="_blank">Reel'ni ko'rish ↗️</a>
+                </div>
+                <div class="video-info">
+                    <h3>🥤 Yozgi Ichimliklar (Instagram Reel)</h3>
+                    <p>Sovuq ichimliklar, milkshake va shirin desertlar! Har bir ovqatni mukammal tugallang!</p>
+                </div>
+            </div>
+
+            <div class="video-card">
+                <div class="video-wrapper">
+                    <a style="margin-top: 100px;" href="https://www.instagram.com/reel/DFh_iomsVYM/?igsh=MTF1MTgybzFsOXkzdw==" target="_blank">Reel'ni ko'rish ↗️</a>
+                </div>
+                <div class="video-info">
+                    <h3>👨‍👩‍👧‍👦 Frenzy'da Oilaviy Kunningiz (Instagram Reel)</h3>
+                    <p>Bizning do'stona jamoamiz va baxtli mijozlarimiz! Siz ham Frenzy oilasining bir qismi bo'ling!</p>
+                </div>
+            </div>
+
+            <div class="video-card">
+                <div class="video-wrapper">
+                    <a style="margin-top: 100px;" href="https://www.instagram.com/reel/DF7vcthMKPe/?igsh=MWg1Nno2d2QzM2p3Mw==" target="_blank">Reel'ni ko'rish ↗️</a>
+                </div>
+                <div class="video-info">
+                    <h3>🆕 Yangi Menyu Tanishtiruvi (Instagram Reel)</h3>
+                    <p>Har haftada yangi va hayajonli taomlar! Frenzy Fast Food har doim innovatsion va mazali!</p>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <h2>🎉 Bizga Bugun Tashrif Buyuring! 🎉</h2>
+        <p>Tez, mazali va sifatli taomlar uchun eng yaxshi joy!</p>
+        <a href="index.html" class="btn">Menyuni Ko'ring 🍔</a>
+    </section>
+
+    <footer>
+        <p>🍔 &copy; 2025 Frenzy Fast Food. Barcha huquqlar himoyalangan. 🍔</p>
+        <div class="footer-emoji">⭐⭐⭐⭐⭐</div>
+        <p style="margin-top: 15px; font-size: 0.95rem; opacity: 0.8;">Tez xizmat | Mazali taomlar | Sifatli mahsulot</p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('navMenu').classList.toggle('active');
+        }
+
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('navMenu').classList.remove('active');
+            });
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const target = document.querySelector(this.getAttribute('href'));
+                if(target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Parallax effect for video cards
+        window.addEventListener('scroll', () => {
+            const cards = document.querySelectorAll('.video-card');
+            cards.forEach(card => {
+                const rect = card.getBoundingClientRect();
+                const scrollPercent = (window.innerHeight - rect.top) / window.innerHeight;
+                if (scrollPercent > 0 && scrollPercent < 1) {
+                    card.style.transform = `translateY(${(1 - scrollPercent) * 20}px)`;
+                }
+            });
+        });
+    </script>
+</body>
+</html>

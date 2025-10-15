@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frenzy Fast Food - Joylashuv</title>
+    <link rel="icon" href="image.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #FF6B35;
+            --secondary: #F7931E;
+            --dark: #2C2C2C;
+            --light: #FFF8F0;
+            --white: #FFFFFF;
+            --shadow: rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--light);
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        .main-header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 107, 53, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .main-header.scrolled {
+            background: rgba(255, 107, 53, 1);
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 40px;
+        }
+
+        .logo {
+            height: 70px;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05) rotate(2deg);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 5px;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            padding: 12px 24px;
+            font-weight: 600;
+            font-size: 14px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            position: relative;
+            border-radius: 8px;
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            bottom: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 3px;
+            background: white;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .nav-link:hover::before {
+            width: 60%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 28px;
+            cursor: pointer;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-top: 100px;
+            padding: 60px 40px;
+        }
+
+        .page-title {
+            text-align: center;
+            font-size: 3.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+
+        .page-subtitle {
+            text-align: center;
+            font-size: 1.3rem;
+            color: #666;
+            margin-bottom: 60px;
+        }
+
+        /* Location Cards */
+        .locations-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            /* 3 ta filial bo'lgani uchun grid-template-columns ni yangiladim */
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .location-card {
+            background: white;
+            border-radius: 25px;
+            padding: 40px;
+            box-shadow: 0 10px 40px var(--shadow);
+            transition: all 0.3s ease;
+        }
+
+        .location-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(255, 107, 53, 0.2);
+        }
+
+        .location-card h3 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 25px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .location-card .info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .location-card .icon {
+            /* Font Awesome ikonkalari bilan ishlatish uchun */
+            font-size: 1.5rem;
+            min-width: 30px;
+            color: var(--secondary); /* Ikonka rangini o'zgartirdim */
+        }
+
+        .location-card strong {
+            color: var(--primary);
+        }
+
+        .location-card a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .location-card a:hover {
+            color: var(--dark);
+        }
+        
+        /* Map Section */
+        .map-section {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 25px;
+            padding: 50px;
+            box-shadow: 0 10px 40px var(--shadow);
+        }
+
+        .map-section h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            text-align: center;
+            margin-bottom: 40px;
+            font-weight: 800;
+        }
+
+        /* Xaritalar uchun yangi grid uslubi */
+        .maps-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .map-container {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .map-container h3 {
+            background-color: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 10px;
+            font-size: 1.2rem;
+            margin: 0;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 450px; /* Birlashtirilgan koddan oldim */
+            border: 0;
+            display: block;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--dark) 0%, #1a1a1a 100%);
+            color: white;
+            text-align: center;
+            padding: 40px;
+            margin-top: 60px;
+            font-size: 1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .locations-container {
+                grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--primary);
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .nav-link {
+                padding: 15px;
+                text-align: center;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .main-content {
+                padding: 40px 20px;
+            }
+
+            .page-title {
+                font-size: 2.5rem;
+            }
+
+            .page-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .locations-container {
+                grid-template-columns: 1fr;
+            }
+
+            .map-section {
+                padding: 30px 20px;
+            }
+            
+            .maps-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .map-section h2 {
+                font-size: 2rem;
+            }
+
+            .map-container iframe {
+                height: 350px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="main-header" id="header">
+        <nav class="nav-container">
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+            <img src="image.png" alt="Frenzy Fast Food Logo" class="logo">
+            
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item"><a href="animatsiya1.html" class="nav-link">Asosiy</a></li>
+                <li class="nav-item"><a href="animatsiya2.html" class="nav-link">Reklama</a></li>
+                <li class="nav-item"><a href="animatsiya3.html" class="nav-link">Ma'lumot</a></li>
+                <li class="nav-item"><a href="animatsiya4.html" class="nav-link">Bog'lanish</a></li>
+                <li class="nav-item"><a href="https://maps.app.goo.gl/qzjcgZmJ7Mni9zu66" class="nav-link">Joylashuv</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="main-content">
+        <h1 class="page-title">Bizning Joylashuvimiz</h1>
+        <p class="page-subtitle">Bizni quyidagi manzillarda topishingiz mumkin</p>
+
+
+            <div class="location-card">
+                <h3><i class="fa-solid fa-location-dot"></i> Guliston Filiali</h3>
+                <div class="info-item">
+                    <span class="icon"><i class="fa-solid fa-building"></i></span>
+                    <div>
+                        <strong>Manzil:</strong><br>
+                        Toshkent viloyati, Guliston
+                    </div>
+                </div>
+                <div class="info-item">
+                    <span class="icon"><i class="fa-solid fa-clock"></i></span>
+                    <div>
+                        <strong>Ish vaqti:</strong><br>
+                        Har kuni: 10:00 – 23:00
+                    </div>
+                </div>
+                <div class="info-item">
+                    <span class="icon"><i class="fa-solid fa-phone"></i></span>
+                    <div>
+                        <strong>Telefon:</strong><br>
+                        <a href="tel:+998902550099">+998 90 255 00 99</a>
+                    </div>
+                </div>
+                 <div class="info-item">
+                    <span class="icon"><i class="fa-solid fa-truck"></i></span>
+                    <div>
+                        <strong>Yetkazib berish:</strong><br>
+                        Aniqlanmoqda
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="map-section">
+            <h2>Bizning Filiallarimiz Xaritada</h2>
+            <div class="maps-grid">
+
+                <div class="map-container">
+                    <h3>Guliston Filiali</h3>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3034.264876576292!2d68.77849627583122!3d40.491525471427735!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38b207013cabcce1%3A0x2b710779a3605835!2z0JvQsNCy0LDRiCDRhtC10L3RgtGAINCz0YPQu9C40YHRgtCw0L0!5e0!3m2!1sru!2s!4v1760459198626!5m2!1sru!2s" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                
+                </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2025 Frenzy Fast Food. Barcha huquqlar himoyalangan.</p>
+    </footer>
+
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const target = document.querySelector(this.getAttribute('href'));
+                if(target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if(window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu
+        function toggleMobileMenu() {
+            document.getElementById('navMenu').classList.toggle('active');
+        }
+
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('navMenu').classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>

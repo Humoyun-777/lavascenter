@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lavash Center - Guliston</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Umumiy stillar */
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding-top: 80px; /* Header balandligi uchun joy qoldirish */
+            background-color: #f4f7f6; /* Yumshoq fon */
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header va Navigatsiya */
+        .main-header {
+            background: linear-gradient(90deg, #FC004A 0%, #FF7F50 100%); /* Yorqin gradient */
+            padding: 0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            height: 70px; /* Balandlikni oshirdik */
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            height: 100%;
+        }
+
+        .main-logo img {
+            height: 50px; /* Kichikroq logo */
+            width: 50px;
+            border-radius: 50%; /* Dumaloq shakl */
+            border: 2px solid white;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 15px; /* Bo'shliqni oshirdik */
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            display: block;
+            font-weight: 600;
+            font-size: 15px;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            border-radius: 6px;
+        }
+
+        .nav-link:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        /* Hover animatsiyasi (pastki chiziq) */
+        .nav-item::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 3px;
+            background-color: white;
+            transition: width 0.3s ease;
+        }
+
+        .nav-item:hover::after {
+            width: 80%;
+        }
+
+        /* Mobil menyu tugmasi */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 28px;
+            cursor: pointer;
+        }
+        
+        /* Kontent stillari */
+        .content-section {
+            background-color: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            margin-top: 20px;
+        }
+
+        .content-section h1 {
+            color: #FC004A;
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #FC004A;
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+
+        .content-section p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: #555;
+            text-align: justify;
+            text-indent: 2em; /* Abzats boshini ajratish */
+        }
+        
+        .lavash-center-name {
+            font-weight: 700;
+            color: #FF7F50;
+        }
+        
+        .highlight {
+            font-weight: 700;
+            color: #FC004A;
+        }
+
+        /* --- Responsive Design (Mobil uchun) --- */
+        @media (max-width: 768px) {
+            body {
+                padding-top: 70px;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: #FC004A;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+                border-top: 1px solid rgba(255, 255, 255, 0.2);
+            }
+            
+            .nav-menu.active {
+                display: flex;
+            }
+            
+            .nav-link {
+                padding: 15px 24px;
+                text-align: center;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+            
+            .nav-item::after {
+                display: none; /* Mobil menyuda pastki chiziqni o'chiramiz */
+            }
+            
+            .content-section {
+                padding: 20px;
+            }
+            
+            .content-section h1 {
+                font-size: 1.8rem;
+            }
+            
+            .content-section p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <nav class="nav-container">
+            <img style="width: 100px;" src="image.png" alt="">
+            
+            <button class="mobile-menu-btn" aria-label="Menyu" onclick="toggleMobileMenu()">☰</button>
+            
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item">
+                    <a href="k1.html" class="nav-link">ASOSIY</a>
+                </li>
+                <li class="nav-item">
+                    <a href="k2.html" class="nav-link">REKLAMA</a>
+                </li>
+                <li class="nav-item">
+                    <a href="k3.html" class="nav-link">BOG'LANISH</a>
+                </li>
+                <li class="nav-item">
+                    <a href="k4.html" class="nav-link">JOYLASHUVIMIZ</a>
+                </li>
+            </ul>
+        </nav>  
+    </header>
+
+    <main class="container">
+        <section class="content-section">
+            <h1>Lavash Center — Gulistonning Yuragi</h1>
+            
+            <p><strong><span class="lavash-center-name">Lavash Center</span></strong> Guliston shahrining markazida, tong otganidan kechgacha shovqin-suronga to‘la ko‘chalarda joylashgan. Bu joyni bilmagan odamning o‘zi yo‘q desak, mubolag‘a bo‘lmaydi. Har kuni bu yer oldidan o‘tgan har kimni <span class="highlight">yangi pishgan lavashning</span>, iliq nonning va qovurilgan go‘shtning xushbo‘y hidi o‘ziga chorlaydi.</p>
+
+            <p>Issiq yoz kunlarida ham, qorli qish kechalarida ham <span class="lavash-center-name">Lavash Center</span> eshiklari hech qachon yopilmaydi. Do‘konga kirgan odamni darhol <span class="highlight">samimiy tabassum</span> bilan kutib oladigan sotuvchi yigitlar, shirin so‘zli qizlar — bu joyning asl ruhini yaratadi. Xodimlarimiz doimo sizga xizmat ko'rsatishga tayyor!</p>
+
+            <p>Ichkarida esa <span class="highlight">qulaylik va farovonlik</span> hukm suradi. Har bir stol ustida yaltirab turgan metall laganlar, yangi siqilgan sharbatning tiniqligi, orqa fonda eshitilayotgan zamonaviy musiqa — barchasi mehmonni uzoq qolishga, bir piyola choy ustida dam olishga undaydi. Bizning joyimiz oilaviy tushliklar va do'stona uchrashuvlar uchun eng zo'r maskan.</p>
+
+            <p>Ammo <span class="lavash-center-name">Lavash Center</span>ning eng katta jozibasi — bu, albatta, ularning <span class="highlight">malikamizday beqiyos lavashi</span>. Qarsildoq non orasida shirin sous, xushbo‘y ziravorlar va iliq go‘sht — bularning barchasi bir tishlagiday <span class="highlight">oliy lazzatni</span> beradi. Ba’zilar bu lavashni “Gulistonning eng zo‘r ta’mi” deb ataydi, ba’zilar esa “bolalik esdaliklari”ni eslaydi.</p>
+
+            <p>Kechqurun esa bu joy yanada jonlanadi. Yoshlar, oilalar, ishchilardan tortib talabalarigacha bu yerga oqib keladi. Kimdir telefonini quvvatlab o‘tiradi, kimdir do‘stlari bilan <span class="highlight">xandon-kulib</span> o‘tiradi, kimdir esa faqat lavashini olib, yo‘lida davom etadi.</p>
+
+            <p>Ammo har kim bu yerdan bir xil tuyg‘u bilan chiqadi — <span class="highlight">iliqlik va to‘qlik hissi</span> bilan. <span class="lavash-center-name">Lavash Center</span> faqat ovqatlanish joyi emas, u Gulistonning yuragida urayotgan bir <span class="highlight">samimiyat markaziga</span> aylangan.</p>
+
+            <p>Go‘yo bu joyda har bir lavash bir hikoya, har bir mehmon esa o‘sha hikoyaning <span class="highlight">qahramoniga</span> aylanadi. Sizni ham ushbu lazzatli hikoyaning bir qismi bo'lishga chorlab qolamiz!</p>
+        </section>
+    </main>
+
+    <script>
+        // Mobil menyu funksiyasi
+        function toggleMobileMenu() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.toggle('active');
+        }
+
+        // Havola bosilganda mobil menyuni yopish
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                const navMenu = document.getElementById('navMenu');
+                if (navMenu.classList.contains('active')) {
+                    navMenu.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
