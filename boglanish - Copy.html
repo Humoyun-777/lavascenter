@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lavash Center - Contact and Social Media</title>
+    <link rel="icon" href="image.png"> 
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        /* Olov ranglar Frenzy kodi asosida qaytarildi va Logotip ranglariga moslashtirildi */
+        :root {
+            --primary: #FF6B35; /* To'q sariq/Orange (Asosiy rang) */
+            --secondary: #F7931E; /* Ochiqroq to'q sariq (Akkent rang) */
+            --dark: #2C2C2C;
+            --light: #FFF8F0; /* Olov rangga yaqin och fon */
+            --white: #FFFFFF;
+            --shadow: rgba(0, 0, 0, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--light);
+            color: var(--dark);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            padding-top: 80px;
+        }
+
+        /* Navigatsiya nuqtalarini yo'qotish uchun asosiy uslub */
+        .nav-menu {
+            list-style: none; /* LI nuqtalarini yo'qotadi */
+        }
+        
+        /* --- Header uchun asosiy uslublar --- */
+        .main-header {
+            background-color: var(--primary); /* Olov rang */
+            color: white;
+            padding: 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            height: 80px;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
+            height: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: block;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+            padding: 0;
+            margin: 0;
+        }
+
+        .main-logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .main-logo img {
+            height: 60px;
+            width: auto;
+             filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+        }
+        
+        /* Kichik ekranlar uchun menyu yo'q */
+        .nav-menu {
+            display: none;
+        }
+
+        /* Mobil menyuni ochish uslubi */
+        .nav-menu.active {
+            display: flex;
+            position: absolute;
+            top: 80px;
+            left: 0;
+            width: 100%;
+            background: var(--primary);
+            flex-direction: column;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            padding-bottom: 10px;
+        }
+        
+        .nav-menu.active .nav-item {
+            width: 100%;
+            text-align: center;
+        }
+        
+        .nav-menu.active .nav-link {
+            padding: 15px 24px;
+            border-right: none;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        @media (min-width: 769px) {
+            .mobile-menu-btn {
+                display: none;
+            }
+            .nav-menu {
+                display: flex;
+                flex: 1;
+                justify-content: flex-start;
+                margin-left: 20px;
+            }
+        }
+        
+        /* Navigatsiya havolalari (Nav-links) uchun uslublar */
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            padding: 20px 24px;
+            display: block;
+            font-weight: 500;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-menu.active .nav-link {
+            padding: 15px 24px;
+            border-right: none;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            text-decoration: none;
+        }
+
+        .contact-container {
+            flex-grow: 1;
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 40px;
+            background: var(--white);
+            border-radius: 30px;
+            box-shadow: 0 15px 50px var(--shadow);
+            text-align: center;
+        }
+
+        .contact-container h1 {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+
+        .contact-container p {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 50px;
+        }
+
+        .content-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 50px;
+        }
+
+        .section-box {
+            background: linear-gradient(145deg, #FFF8F0 0%, #FFE8D0 100%); /* Olov rangga mos fon */
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 450px;
+            transition: transform 0.3s ease;
+        }
+        
+        .section-box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(255, 107, 53, 0.2); /* Olov rang hover */
+        }
+
+        .section-box h3 {
+            color: var(--dark);
+            margin-bottom: 25px;
+            font-weight: 700;
+            font-size: 1.8rem;
+            border-bottom: 3px solid var(--secondary);
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+        
+        .social-links-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            max-width: 350px;
+            padding: 15px;
+            border-radius: 10px;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .social-btn i {
+            margin-right: 15px;
+            font-size: 1.5rem;
+        }
+        
+        /* Ijtimoiy tarmoqlar ranglari o'zgartirilmadi, chunki ular universal */
+        .social-btn.instagram {
+            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+        }
+        .social-btn.facebook {
+            background: #1877F2;
+        }
+        .social-btn.telegram {
+             background: #0088CC; /* Telegram rangi */
+        }
+
+        .social-btn:hover {
+            opacity: 0.9;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .qr-code-img {
+            width: 250px;
+            height: 250px;
+            border: 10px solid var(--white);
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 15px;
+        }
+        
+        .qr-box p {
+            font-size: 0.95rem;
+            color: #444;
+            margin-top: 15px;
+        }
+
+        .contact-info {
+            margin-top: 50px;
+            padding: 30px;
+            background: var(--primary);
+            color: white;
+            border-radius: 15px;
+        }
+
+        .contact-info a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 600;
+            display: block;
+            margin: 10px 0;
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            color: var(--secondary);
+        }
+
+        footer {
+            background: linear-gradient(135deg, var(--dark) 0%, #1a1a1a 100%);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .contact-container {
+                margin: 40px 20px;
+                padding: 30px 20px;
+            }
+
+            .contact-container h1 {
+                font-size: 2.5rem;
+            }
+
+            .content-wrapper {
+                gap: 30px;
+            }
+
+            .qr-code-img {
+                width: 200px;
+                height: 200px;
+            }
+
+            .nav-container {
+                padding: 0 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <nav class="nav-container">
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+            
+            <div class="main-logo">
+                <img style="height: 60px; width: auto;" src="img/image.png" alt="Lavash Center Logo">
+            </div>
+            
+            <ul style="gap: 10px; text-decoration: none; color: white;" class="nav-menu" id="navMenu">
+                <li class="nav-item">
+                    <a style="margin-top: 10px;" href="index - Copy.html" class="nav-link">HOME</a>
+                </li>
+                <li class="nav-item">
+                    <a style="margin-top: 10px;" href="reklama - Copy.html" class="nav-link">ADVERTISEMENTS</a>
+                </li>
+                <li class="nav-item">
+                    <a style="margin-top: 10px;" href="malumot - Copy.html" class="nav-link">INFORMATION</a>
+                </li>
+                <li class="nav-item">
+                    <a style="margin-top: 10px;" href="joylashuv - Copy.html" class="nav-link">LOCATION</a>
+                </li>
+                
+            </ul>
+        </nav> 
+    </header>
+
+    <div class="contact-container">
+        <h1>Lavash Center Guliston</h1>
+        <p>All our social media pages and contact information in one place!</p>
+        
+        <div class="content-wrapper">
+            
+            <div class="section-box social-links-box">
+                <h3>Social Pages</h3>
+                
+                <a href="https://t.me/lavashcenter_guliston" target="_blank" class="social-btn telegram">
+                    <i class="fab fa-telegram-plane"></i> Telegram
+                </a>
+                
+                <a href="https://www.instagram.com/lavashcenter_guliston?igsh=MWxpdDEzZW0zbXI4cw==" target="_blank" class="social-btn instagram">
+                    <i class="fab fa-instagram"></i> Instagram
+                </a>
+                
+                <a href="https://www.facebook.com/lavash.center" target="_blank" class="social-btn facebook">
+                    <i class="fab fa-facebook-f"></i> Facebook
+                </a>
+            </div>
+
+            <div id="qr-kodlar" class="section-box qr-box">
+                <h3>QR Codes</h3>
+                
+                <a href="https://t.me/lavashcenter_guliston" target="_blank">
+                    <img src="qr cod/199e8c0c3661a205680d5b95042b6e52.png" alt="Telegram QR Code" class="qr-code-img">
+                </a>
+                <p>Scan to access our Telegram channel</p>
+                
+                <a href="https://www.instagram.com/lavashcenter_guliston?igsh=MWxpdDEzZW0zbXI4cw==" target="_blank">
+                    <img src="qr cod/3493bc7a86f52eef1180366cb133d559.png" alt="Instagram QR Code" class="qr-code-img">
+                </a>
+                <p>Scan to access our Instagram page</p>
+                
+                <a href="https://www.facebook.com/lavash.center" target="_blank">
+                    <img src="qr cod/569c2c2eb722e83db328c7273b747769.png" alt="Facebook QR Code" class="qr-code-img">
+                </a>
+                <p>Scan to access our Facebook page</p>
+            </div>
+        </div>
+
+        <div class="contact-info">
+            <h3>Contact Information</h3>
+            <br>
+            <p><i class="fas fa-phone-alt"></i> Phone number:</p>
+            <a href="tel:+998902550099"> +998 90 255 00 99</a> 
+            <p style="margin-top: 20px;"><i class="fas fa-map-marker-alt"></i> Address:</p>
+            <a target="_blank" href="https://maps.app.goo.gl/iDH1Ldc7aeu74CFa7">Guliston city. Click to see the address</a>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>© 2025 Lavash Center Guliston. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Mobile menu toggle funksiyasi
+        function toggleMobileMenu() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.toggle('active');
+        }
+        
+        // Havolani bosgandan keyin menyuni yopish
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                const navMenu = document.getElementById('navMenu');
+                // Faqat mobil menyu ochiq bo'lsa yopish
+                if (navMenu.classList.contains('active')) {
+                    navMenu.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
